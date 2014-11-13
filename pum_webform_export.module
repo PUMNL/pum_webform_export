@@ -1,0 +1,67 @@
+<?php
+
+function pum_webform_export_node_export_alter(&$nodes, $format) {
+  //var_dump($nodes); exit();
+}
+
+/**
+ * Manipulate a node on export.
+ *
+ * @param &$node
+ *   The node to alter.
+ * @param $original_node
+ *   The unaltered node.
+ */
+function pum_webform_export_node_export_node_alter(&$node, $original_node) {
+  if ($node->type != 'webform') {
+    return;
+  }
+  
+  if (empty($node->webform_civicrm)) {
+    return;
+  }
+  
+  civicrm_initialize();
+  
+  PumWebformExportCustomFieldHandler::export($node, $original_node);
+  PumWebformExportRelationshipHandler::export($node, $original_node);
+  PumWebformExportCaseHandler::export($node, $original_node);
+  PumWebformExportActivityHandler::export($node, $original_node);
+  PumWebformExportLocationTypeHandler::export($node, $original_node);
+  PumWebformExportGroupHandler::export($node, $original_node);
+  
+  //var_dump($node); exit();
+}
+
+/**
+ * Manipulate a node on import.
+ *
+ * @param &$node
+ *   The node to alter.
+ * @param $original_node
+ *   The unaltered node.
+ * @param $save
+ *   Whether the node will be saved by node_export_import().
+ */
+function pum_webform_export_node_export_node_import_alter(&$node, $original_node, $save) {
+  
+  if ($node->type != 'webform') {
+    return;
+  }
+  
+  if (empty($node->webform_civicrm)) {
+    return;
+  }
+  
+  civicrm_initialize();
+  
+  PumWebformExportCustomFieldHandler::import($node, $original_node);
+  PumWebformExportRelationshipHandler::import($node, $original_node);
+  PumWebformExportCaseHandler::import($node, $original_node);
+  PumWebformExportActivityHandler::import($node, $original_node);
+  PumWebformExportLocationTypeHandler::import($node, $original_node);
+  PumWebformExportGroupHandler::import($node, $original_node);
+  
+  // no example code
+  //var_dump($node); exit();
+}

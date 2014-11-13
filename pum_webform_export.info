@@ -1,0 +1,14 @@
+name = Webform CiviCRM Export
+description = Exporting of CiviCRM webforms. This modules makes sure that Civi ID's in the webform configurations are translated into their Civi names. E.g. relationship type id into a relationship name
+core = 7.x
+package = PUM
+dependencies[] = civicrm (>=4.4)
+dependencies[] = webform (>=4.0-beta1)
+dependencies[] = node_export
+
+files[] = handlers/custom_field.inc
+files[] = handlers/relationship.inc
+files[] = handlers/case.inc
+files[] = handlers/activity.inc
+files[] = handlers/locationtype.inc
+files[] = handlers/group.inc
