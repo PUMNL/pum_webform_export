@@ -12,3 +12,4 @@ files[] = handlers/case.inc
 files[] = handlers/activity.inc
 files[] = handlers/locationtype.inc
 files[] = handlers/group.inc
+files[] = handlers/drupal_roles.inc

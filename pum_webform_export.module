@@ -29,8 +29,7 @@ function pum_webform_export_node_export_node_alter(&$node, $original_node) {
   PumWebformExportActivityHandler::export($node, $original_node);
   PumWebformExportLocationTypeHandler::export($node, $original_node);
   PumWebformExportGroupHandler::export($node, $original_node);
-  
-  //var_dump($node); exit();
+  PumWebformExportDrupalRolesHandler::export($node, $original_node);
 }
 
 /**
@@ -61,7 +60,5 @@ function pum_webform_export_node_export_node_import_alter(&$node, $original_node
   PumWebformExportActivityHandler::import($node, $original_node);
   PumWebformExportLocationTypeHandler::import($node, $original_node);
   PumWebformExportGroupHandler::import($node, $original_node);
-  
-  // no example code
-  //var_dump($node); exit();
+  PumWebformExportDrupalRolesHandler::import($node, $original_node);
 }
